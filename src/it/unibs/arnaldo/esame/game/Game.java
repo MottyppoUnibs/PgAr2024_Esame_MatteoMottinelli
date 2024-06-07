@@ -204,6 +204,7 @@ public class Game {
                             UserInteraction.printColoredMessage("Bersaglio troppo distante", AnsiColors.RED);
                         }
                         player.setHasBanged(true);
+                        player.discardCard(new Card(Card.GIOCA_E_SCARTA, Deck.BANG));
                     }
                 } else {
                     UserInteraction.printColoredMessage("Non puoi giocare questa carta, non ora", AnsiColors.RED);
