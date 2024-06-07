@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//TODO: DOC
 public class Cypher {
 
     private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";

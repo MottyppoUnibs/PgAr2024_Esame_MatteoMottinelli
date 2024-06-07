@@ -2,7 +2,6 @@ package it.unibs.arnaldo.esame.game.taunt;
 
 import it.unibs.arnaldo.esame.game.Player;
 
-//TODO: DOC - equals
 public class Taunt {
 
     private static final String TO_STRING = "%s ti sta provocando: \"%s\"";

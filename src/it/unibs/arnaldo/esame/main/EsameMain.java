@@ -7,7 +7,6 @@ import it.unibs.arnaldo.esame.io.Ranking;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: DOC
 public class EsameMain {
 
     public static void main(String[] args) {
@@ -19,6 +18,7 @@ public class EsameMain {
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
             players.add(new Player(UserInteraction.chooseName(i + 1), mode));
+            //TODO: aggiungi controlli sui nomi (devono essere tutti diversi)
         }
         // let's start a gaming session
         Saloon saloon = new Saloon(players, mode);

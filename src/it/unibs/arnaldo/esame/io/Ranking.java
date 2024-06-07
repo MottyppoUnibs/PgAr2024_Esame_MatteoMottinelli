@@ -9,9 +9,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
-//TODO: DOC
 public class Ranking {
 
     private static final String FILE = "resources/ranking.xml";
@@ -28,7 +28,7 @@ public class Ranking {
 
     public Ranking(List<Player> players) {
         this.players = players;
-        //TODO: order based on score;
+        Collections.sort(players);
     }
 
     public void writeRanking() {
@@ -60,7 +60,6 @@ public class Ranking {
     private void writePlayer(XMLStreamWriter xmlw, Player player) throws XMLStreamException {
         xmlw.writeCharacters("\t");
         xmlw.writeEmptyElement(PLAYER);
-
         xmlw.writeAttribute(NAME, player.getName());
         xmlw.writeAttribute(BALANCE, String.valueOf(player.getBalance()));
         xmlw.writeAttribute(GAMES_PLAYED, String.valueOf(player.getGamesPlayed()));
