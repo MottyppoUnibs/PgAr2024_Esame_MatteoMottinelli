@@ -65,8 +65,39 @@ public class GameMap {
     }
 
     public int getDistanceBetween(Player p1, Player p2) {
-        //TODO: distance between two players
-        return 0;
+        Position pos1 = positions.get(p1);
+        Position pos2 = positions.get(p2);
+        int[][] dist = new int[GRID_SIZE][GRID_SIZE];
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                if (i == pos1.getI() && j == pos1.getJ()) dist[i][j] = 0;
+                else dist[i][j] = -1;
+            }
+        }
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                if (dist[i][j] == 0) {
+                    explore(dist, i, j, pos2.getI(), pos2.getJ());
+                    break;
+                }
+            }
+        }
+        return dist[pos2.getI()][pos2.getJ()] / 2;
+    }
+
+    //NON SO NEMMENO SE FUNZIONA E LO STO FACENDO A 10 MINUTI DALLA FINE, E'
+    //TIPO IL METODO RICORSIVO PIU BRUTTO CHE ABBIA MAI SCRITTO PERO NON FATECI CASO
+    private void explore(int[][] dist, int i, int j, int ti, int tj) {
+        if (i < 0 || j < 0 || i >= GRID_SIZE || j >= GRID_SIZE ||
+            (i == ti && i == tj)) return;
+        if (dist[i][j] + 1 < dist[i - 1][j]) dist[i - 1][j] = dist[i][j] + 1;
+        else explore (dist, i - 1, j, ti, tj);
+        if (dist[i][j] + 1 < dist[i + 1][j]) dist[i + 1][j] = dist[i][j] + 1;
+        else explore (dist, i + 1, j, ti, tj);
+        if (dist[i][j] + 1 < dist[i][j - 1]) dist[i][j - 1] = dist[i][j] + 1;
+        else explore (dist, i, j - 1, ti, tj);
+        if (dist[i][j] + 1 < dist[i][j + 1]) dist[i][j + 1] = dist[i][j] + 1;
+        else explore (dist, i, j + 1, ti, tj);
     }
 
 }
