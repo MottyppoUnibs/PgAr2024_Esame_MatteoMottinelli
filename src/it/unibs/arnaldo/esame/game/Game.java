@@ -224,6 +224,7 @@ public class Game {
     }
 
     private void discard(Player player) {
+        UserInteraction.printColoredMessage("Devi scartare delle carte: ", AnsiColors.CYAN);
         while (player.getCards().size() > player.getHp()) {
             player.discardCard(UserInteraction.chooseCard(player.getCards()));
         }
