@@ -36,6 +36,7 @@ public class UserInteraction {
     private static final String CHOOSE_PLAYER_TITLE = "GIOCATORI";
     private static final String CHOOSE_CARD_TITLE = "CARTE";
     private static final String SHERIFF_MESSAGE = "Lo sceriffo è: %s";
+    private static final String ROLE_MESSAGE = "Il tuo ruolo è: %s";
     private static final String HP_MESSAGE = "ti rimangono %d hp";
     private static final String DISTANCE_MESSAGE = "La distanza tra %s e %s è: %d";
     private static final String CARD_MESSAGE = "%s";
@@ -45,6 +46,7 @@ public class UserInteraction {
     private static final String WINNER_MESSAGE = "Ha vinto: %s, ruolo: %s";
     private static final String[] ACTIONS_ENTRIES = {
         "Visualizza chi è lo sceriffo",
+        "Visualizza il mio ruolo",
         "Visualizza le mie carte",
         "Visualizza la distanza tra me e ...",
         "Visualizza i miei punti ferita",
@@ -137,6 +139,10 @@ public class UserInteraction {
 
     public static void showSheriff(Player sheriff) {
         printColoredMessage(String.format(SHERIFF_MESSAGE, sheriff.toString()), AnsiColors.CYAN);
+    }
+
+    public static void showRole(Player player) {
+        printColoredMessage(String.format(ROLE_MESSAGE, player.getRole()), AnsiColors.CYAN);
     }
 
     public static void showCards(Player player) {

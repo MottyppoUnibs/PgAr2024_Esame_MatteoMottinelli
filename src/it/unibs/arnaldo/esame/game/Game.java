@@ -17,10 +17,11 @@ public class Game {
     private static final int CARDS_FOR_TURN = 2;
     private static final int CARDS_FOR_KILL = 3;
     private static final int SHOW_SHERIFF = 0;
-    private static final int SHOW_CARDS = 1;
-    private static final int SHOW_DISTANCE = 2;
-    private static final int SHOW_HP = 3;
-    private static final int PLAY_CARD = 4;
+    private static final int SHOW_ROLE = 1;
+    private static final int SHOW_CARDS = 2;
+    private static final int SHOW_DISTANCE = 3;
+    private static final int SHOW_HP = 4;
+    private static final int PLAY_CARD = 5;
 
     private List<Player> players;
     private Player sheriff;
@@ -165,6 +166,9 @@ public class Game {
             switch (action) {
                 case SHOW_SHERIFF:
                     UserInteraction.showSheriff(sheriff);
+                    break;
+                case SHOW_ROLE:
+                    UserInteraction.showRole(player);
                     break;
                 case SHOW_CARDS:
                     UserInteraction.showCards(player);
