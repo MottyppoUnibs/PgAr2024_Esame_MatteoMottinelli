@@ -68,35 +68,37 @@ public class GameMap {
         Position pos1 = positions.get(p1);
         Position pos2 = positions.get(p2);
         int[][] dist = new int[GRID_SIZE][GRID_SIZE];
+        boolean[][] visited = new boolean[GRID_SIZE][GRID_SIZE];
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
-                if (i == pos1.getI() && j == pos1.getJ()) dist[i][j] = 0;
-                else dist[i][j] = -1;
+                dist[i][j] = Integer.MAX_VALUE;
             }
         }
+        int distance = 0;
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
-                if (dist[i][j] == 0) {
-                    explore(dist, i, j, pos2.getI(), pos2.getJ());
+                if (i == pos1.getI() && j == pos1.getJ()) {
+                    distance = findPath(dist, visited, i, j, pos2);
                     break;
                 }
             }
         }
-        return dist[pos2.getI()][pos2.getJ()] / 2;
+        return distance / 2;
     }
 
     //TODO: NON FUNZIONA - NON TESTARE LA DISTANZA
-    private void explore(int[][] dist, int i, int j, int ti, int tj) {
-//        if (i < 0 || j < 0 || i >= GRID_SIZE || j >= GRID_SIZE ||
-//            (i == ti && i == tj)) return;
-//        if (dist[i][j] + 1 < dist[i - 1][j]) dist[i - 1][j] = dist[i][j] + 1;
-//        else explore (dist, i - 1, j, ti, tj);
-//        if (dist[i][j] + 1 < dist[i + 1][j]) dist[i + 1][j] = dist[i][j] + 1;
-//        else explore (dist, i + 1, j, ti, tj);
-//        if (dist[i][j] + 1 < dist[i][j - 1]) dist[i][j - 1] = dist[i][j] + 1;
-//        else explore (dist, i, j - 1, ti, tj);
-//        if (dist[i][j] + 1 < dist[i][j + 1]) dist[i][j + 1] = dist[i][j] + 1;
-//        else explore (dist, i, j + 1, ti, tj);
+    private int findPath(int[][] dist, boolean[][] visited, int i, int j, Position target) {
+        if (i < 0 || j < 0 || i >= GRID_SIZE || j >= GRID_SIZE || visited[i][j]) return 0;
+        if (i == target.getI() && j == target.getJ()) return 0;
+        visited[i][j] = true;
+        int min = Integer.MAX_VALUE;
+        min = Math.min(min, findPath(dist, visited, i - 1, j, target));
+        min = Math.min(min, findPath(dist, visited, i - 1, j, target));
+        min = Math.min(min, findPath(dist, visited, i, j - 1, target));
+        min = Math.min(min, findPath(dist, visited, i, j + 1, target));
+        min++;
+        dist[i][j] = min;
+        return min;
     }
 
 }
