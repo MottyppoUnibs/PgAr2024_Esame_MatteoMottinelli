@@ -35,10 +35,15 @@ public class Deck {
         cards.addFirst(new Weapon(Card.EQUIPAGGIABILI, REV_CARABINE, REV_CARABINE_RANGE));
         // Winchester
         cards.addFirst(new Weapon(Card.EQUIPAGGIABILI, WINCHESTER, WINCHESTER_RANGE));
+        shuffle();
     }
 
     public Deck(Deque<Card> discarded) {
         cards = discarded;
+        shuffle();
+    }
+
+    private void shuffle() {
         List<Card> list = new ArrayList<>();
         while (!cards.isEmpty()) {
             list.add(cards.removeFirst());
