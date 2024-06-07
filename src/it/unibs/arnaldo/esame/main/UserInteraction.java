@@ -122,7 +122,7 @@ public class UserInteraction {
     }
 
     public static Card chooseCard(List<Card> cards) {
-        String[] entries = new String[cards.size() - 1];
+        String[] entries = new String[cards.size()];
         int i = 0;
         for (Card card : cards) {
                 entries[i++] = card.toString();
