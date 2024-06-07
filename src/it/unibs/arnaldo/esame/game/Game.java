@@ -53,6 +53,7 @@ public class Game {
         int index = players.indexOf(sheriff);
         do {
             Player current = players.get(index);
+            System.out.printf("Tocca a te: %s", current.getName());
             current.setHasBanged(false);
             showTaunts(current);
             draw(current, CARDS_FOR_TURN);
