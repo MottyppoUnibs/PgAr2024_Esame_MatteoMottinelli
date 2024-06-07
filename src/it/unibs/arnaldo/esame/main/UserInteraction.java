@@ -47,7 +47,7 @@ public class UserInteraction {
         "Visualizza chi è lo sceriffo",
         "Visualizza le mie carte",
         "Visualizza la distanza tra me e ...",
-        "VVisualizza i miei punti ferita",
+        "Visualizza i miei punti ferita",
         "Gioca una carta"
     };
 
